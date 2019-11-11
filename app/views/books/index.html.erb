@@ -1,1 +1,6 @@
-<h1>index page</h1>
+<h1>Book List</h1>
+<ul>
+<% @books.each do |book| %>
+    <%= link_to "#{book.title} by #{book.author.full_name}", book_path(book) %>
+<% end %>
+</ul>
