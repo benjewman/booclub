@@ -1,2 +1,5 @@
 <h1><%= @book.title %></h1>
 <h2>by <%= link_to @author.full_name, author_path(@author) %></h2>
+<% @summaries.each do |summary| %>
+    <p><%= summary.user.username %></p>
+    
