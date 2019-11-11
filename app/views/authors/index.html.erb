@@ -1,6 +1,15 @@
+
 <h1>Authors List</h1>
 <ul>
-    <% @authors.each do |author| %>
-        <li><%= link_to author.full_name, author_path(author) %></li>
+    <% @authors.order(:last_name).each do |author| %>
+        <li><%= link_to author.order_last_name, author_path(author) %></li>
     <% end %>
 </ul>
+
+
+
+
+<%= form_tag(authors_path, method: :get) do %>
+  Search for an Author <%= text_field_tag :first_name, params[:first_name] %>
+  <%= submit_tag 'Search', name: nil%>
+<% end %>
