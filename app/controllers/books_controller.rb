@@ -5,11 +5,14 @@ class BooksController < ApplicationController
 
     def new
         @book = Book.new
+        @authors = Author.all
     end
 
     def create
         @book = Book.new(book_params)
-        if @book.save
+        if @book.author == nil
+            redirect_to new_author_path
+        elsif @book.save
             redirect_to book_path(@book)
         else
             # change the code below

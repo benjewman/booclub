@@ -3,6 +3,7 @@ class Book < ApplicationRecord
     has_many :summaries
     has_many :users, through: :summaries
     accepts_nested_attributes_for :summaries
+    accepts_nested_attributes_for :author
 
     def author_last_name
         self.author.last_name

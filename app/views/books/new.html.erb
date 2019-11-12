@@ -4,8 +4,10 @@
     <%= f.label :title %>
     <%= f.text_field :title %>
 
-    <%= f.label :author_id %>
-    <%= f.collection_select :author_id, Author.all, :id, :full_name %>
+    <%= f.label :publish_date %>
+    <%= f.number_field :publish_date %>
+
+    <%= f.select(:author_id, @authors.collect {|author| [ author.full_name, author.id ] } + [ [ 'Or create a new one', 'new' ] ], {:include_blank => 'Please select an author'}) %>
 
     <%= f.submit %>
 <% end %>

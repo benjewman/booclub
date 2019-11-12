@@ -1,0 +1,19 @@
+<h1>Create a New Author for This Book</h1>
+
+<%= form_for @author do |f| %>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+
+    <h2>Their Book</h2>
+    <%= f.fields_for :books do |book| %>
+        <%= book.label :title %>
+        <%= book.text_field :title %>
+
+        <%= book.label :publish_date %>
+        <%= book.number_field :publish_date %>
+    <% end %>
+    <%= f.submit %>
+<% end %>
