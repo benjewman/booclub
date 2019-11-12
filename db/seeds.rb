@@ -14,7 +14,7 @@ require 'faker'
 end
 
 5.times do
-    User.create(username: Faker::Twitter.screen_name, name: Faker::Name.name, email: Faker::Internet.email)
+    User.create(username: Faker::Twitter.screen_name, name: Faker::Name.name, email: Faker::Internet.email, password: Faker::Internet.password(min_length: 8))
 end
 
 20.times do 
