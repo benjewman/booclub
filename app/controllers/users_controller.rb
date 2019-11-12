@@ -13,7 +13,8 @@ class UsersController < ApplicationController
             @user.save
             redirect_to user_path(@user)
         else
-            render :new
+            flash[:notice] = "Wrong Input! Try Again!"
+            redirect_to new_user_path
         end
     end
 
