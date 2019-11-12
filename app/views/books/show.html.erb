@@ -1,10 +1,14 @@
 <h1><%= @book.title %></h1>
-<h2>by <%= link_to @author.full_name, author_path(@author) %></h2>
+<h1>by <%= link_to @author.full_name, author_path(@author) %></h2>
 
-<h3>Summaries</h3>
+<h2>Summaries</h2>
 <% @summaries.each do |summary| %>
-    <p><b><%= summary.title %></b> summarized by <i><%= summary.username %></i></p>
+    <p><b><%= summary.title %></b>: a summary by <i><%= summary.username %></i></p>
     <p><%= summary.content %></p>
+    <p><%= summary.title %> <b>Comments</b></p>
+    <% summary.comments.each do |comment| %>
+        <p><i><%= comment.content %></i> (<%= comment.user.username %>)</p>
+    <% end %>
     <%= form_for [@book, Comment.new] do |f| %>
         <%# <%= f.label :content %>
         <%= f.text_area :content %>

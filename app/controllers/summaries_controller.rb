@@ -7,7 +7,7 @@ class SummariesController < ApplicationController
         if @summary.save
             redirect_to book_path(@book)
         else
-            flash[:notice] = "Summary couldn't save"
+            flash[:notice] = @summary.errors.full_messages[0]
             redirect_to book_path(@book)
         end
     end
