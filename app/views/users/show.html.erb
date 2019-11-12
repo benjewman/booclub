@@ -1,3 +1,17 @@
-<h1>Show page </h1>
+<h1>Welcome <%= @user.name.capitalize %></h1>
+<p>Username: <%= @user.username%></p>
+<p>Email: <%= @user.email%></p>
 
-<h3>Welcome <%= @user.name %></h3>
+<h2>Your Summaries: </h2>
+
+<% @user.summaries.each do |summary|%>
+    <ul>
+    <%= link_to summary.title, book_path(summary.book)%>
+    </ul>
+<%end%>
+
+
+
+
+
+<%= link_to "Log out!", logout_path, method: :delete %>
