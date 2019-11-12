@@ -8,7 +8,13 @@ class BooksController < ApplicationController
     end
 
     def create
-
+        @book = Book.new(book_params)
+        if @book.save
+            redirect_to book_path(@book)
+        else
+            # change the code below
+            redirect_to books_path
+        end
     end
 
     def show
