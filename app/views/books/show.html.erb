@@ -1,5 +1,33 @@
 <h1><%= @book.title %></h1>
 <h2>by <%= link_to @author.full_name, author_path(@author) %></h2>
+
+<h3>Summaries</h3>
 <% @summaries.each do |summary| %>
-    <p><%= summary.user.username %></p>
-    
+    <p><b><%= summary.title %></b> summarized by <i><%= summary.username %></i></p>
+    <p><%= summary.content %></p>
+<% end %>
+
+<%= form_for [@book, Summary.new] do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %><br>
+
+    <%= f.label :content %>
+    <%= f.text_area :content %><br>
+
+    <!--following code should be changed -->
+    <%= f.hidden_field :user_id, :value => 1 %>
+
+    <%= f.submit %>
+<% end %>
+
+<% if flash[:notice] %>
+    <div class="notice"><font color="red"><%= flash[:notice] %></font></div>
+<% end %>
+
+
+
+
+
+
+
+
