@@ -1,0 +1,13 @@
+<% if flash[:notice] %>
+    <%= flash[:notice]%>
+<%end%>
+
+<%= form_with url: '/sessions' do |f| %>
+    <%= f.label :username%>
+    <%= f.text_field :username%>
+    <%= f.label :password%>
+    <%= f.password_field :password%>
+    <%= f.submit%>
+<%end%>
+
+<%= button_to 'Sign up', new_user_path, method: :get%>

@@ -1,6 +1,14 @@
-class UsersController < ApplicationController 
+class UsersController < ApplicationController
+    before_action :authorize!, only: [:index, :show, :edit, :update]
+
     def show
-        find_user
+        if id_matches_current_user?(params[:id])
+            find_user
+            render :show
+          else
+            flash[:notice] = "You must be logged in to proceed!"
+            redirect_to user_path(session[:user_id])
+        end
     end
 
     def new
@@ -13,7 +21,22 @@ class UsersController < ApplicationController
             @user.save
             redirect_to user_path(@user)
         else
-            render :new
+            flash[:notice] = @user.errors.full_messages
+            redirect_to new_user_path
+        end
+    end
+
+    def edit
+        find_user
+    end
+
+    def update
+        find_user
+        if @user.update(user_params)
+            redirect_to user_path(@user)
+        else
+            flash[:notice] = @user.errors.full_messages
+            redirect_to edit_user_path
         end
     end
 
