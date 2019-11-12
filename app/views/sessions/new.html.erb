@@ -1,4 +1,4 @@
-<% if flash[:notice]%>
+<% if flash[:notice] %>
     <%= flash[:notice]%>
 <%end%>
 
@@ -9,3 +9,5 @@
     <%= f.password_field :password%>
     <%= f.submit%>
 <%end%>
+
+<%= button_to 'Sign up', new_user_path, method: :get%>
