@@ -4,4 +4,9 @@ class Author < ApplicationRecord
     def full_name
         self.first_name + " " + self.last_name
     end
+
+    def order_last_name
+        self.last_name + ", " + self.first_name
+    end
+    
 end

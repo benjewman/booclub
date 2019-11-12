@@ -1,0 +1,11 @@
+<%= form_with url: users_path do |f|%>
+    <%= f.label :name%>
+    <%= f.text_field :name, name: "user[name]"%>
+    <%= f.label :username%>
+    <%= f.text_field :username, name: "user[username]"%>
+    <%= f.label :email%>
+    <%= f.text_field :email, name: "user[email]"%>
+    <%= f.label :password%>
+    <%= f.password_field :password, name: "user[password]"%>
+    <%= f.submit%>
+<%end%>
