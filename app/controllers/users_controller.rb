@@ -1,6 +1,14 @@
-class UsersController < ApplicationController 
+class UsersController < ApplicationController
+    before_action :authorize!, only: [:index, :show, :edit, :update]
+
     def show
-        find_user
+        if id_matches_current_user?(params[:id])
+            find_user
+            render :show
+          else
+            flash[:notice] = "You must be logged in to proceed!"
+            redirect_to user_path(session[:user_id])
+        end
     end
 
     def new
