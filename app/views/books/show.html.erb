@@ -1,3 +1,6 @@
+<% if flash[:notice] %>
+    <div class="notice"><font color="red"><%= flash[:notice] %></font></div> 
+<% end %>
 <h1><%= @book.title %></h1>
 <h1>by <%= link_to @author.full_name, author_path(@author) %></h2>
 <h3>Publish Year: <%= @book.publish_date %></h3>
@@ -32,12 +35,14 @@
 
     <%= f.submit %>
 <% end %>
-
-<% if flash[:notice] %>
-    <div class="notice"><font color="red"><%= flash[:notice] %></font></div>
+<br>
+<% unless session[:id] %>
+    <%= button_to "Login", login_path, method: :get %>
 <% end %>
 
+
 <h3><%= link_to "Other Books", books_path%></h3>
+
 
 
 
