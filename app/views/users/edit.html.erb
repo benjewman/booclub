@@ -1,22 +1,29 @@
-<h1>Edit Profile</h1>
-<% if flash[:notice]%>
-<p><%= flash[:notice]%></p>
-<%end%>
+<html>
+    <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+    <h1>Edit Profile</h1>
+    <% if flash[:notice]%>
+    <p><%= flash[:notice]%></p>
+    <%end%>
 
-<%= form_for @user do |f|%>
-    <%= f.label :name%>
-    <%= f.text_field :name%>
-    <%= f.label :username%>
-    <%= f.text_field :username%>
-    <%= f.label :email%>
-    <%= f.text_field :email%>
-    <%= f.label :password%>
-    <%= f.password_field :password%>
-    <%= f.submit%>
-<%end%>
+    <%= form_for @user do |f|%>
+        <%= f.label :name%>
+        <%= f.text_field :name%>
+        <%= f.label :username%>
+        <%= f.text_field :username%>
+        <%= f.label :email%>
+        <%= f.text_field :email%>
+        <%= f.label :password%>
+        <%= f.password_field :password%>
+        <%= f.submit%>
+    <%end%>
 
-<br>
+    <br>
 
-<%= button_to 'Back to Profile', user_path(@user), method: :get %>
-<br>
-<%= button_to 'Delete Profile', @user, method: :delete%>
+    <%= button_to 'Back to Profile', user_path(@user), method: :get %>
+    <br>
+    <%= button_to 'Delete Profile', @user, method: :delete%>
+    </body>
+</html>
