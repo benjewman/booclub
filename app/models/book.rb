@@ -22,4 +22,8 @@ class Book < ApplicationRecord
         self.summaries.count
     end
 
+    def summary_order
+        summaries.sort_by { |summary| -summary.like_count }
+    end
+
 end
