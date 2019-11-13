@@ -17,4 +17,6 @@
 
 <br>
 
-<%= link_to 'Back', :back %>
+<%= button_to 'Back to Profile', user_path(@user), method: :get %>
+<br>
+<%= button_to 'Delete Profile', @user, method: :delete%>

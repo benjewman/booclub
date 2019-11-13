@@ -41,6 +41,11 @@ class UsersController < ApplicationController
         end
     end
 
+    def destroy
+        find_user.destroy
+        redirect_to login_path
+    end
+
     private
 
     def user_params
