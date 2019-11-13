@@ -10,6 +10,20 @@
 
 
 <%= form_tag(authors_path, method: :get) do %>
-  Search for an Author <%= text_field_tag :first_name, params[:first_name] %>
+  Search for an Author by Last Name <%= text_field_tag :last_name, params[:last_name] %>
   <%= submit_tag 'Search', name: nil%>
+<% end %>
+
+<%= button_to "Book List", books_path, method: :get %>
+
+<% unless @authors.count == Author.all_count %>
+  <%= button_to "All Authors", authors_path, method: :get %>
+<% end %>
+<br>
+<% if logged_in? %>
+    <%= button_to "Your Profile", user_path(current_user), method: :get %>
+<% else %>
+    <%= button_to "Login", login_path, method: :get %><br>
+    <p>Or</p>
+    <%= button_to "Signup", signup_path, method: :get %>
 <% end %>
