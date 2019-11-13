@@ -1,6 +1,7 @@
 class Book < ApplicationRecord
     belongs_to :author
     has_many :summaries
+    has_many :comments, through: :summaries
     has_many :users, through: :summaries
     accepts_nested_attributes_for :summaries
     accepts_nested_attributes_for :author

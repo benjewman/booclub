@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   resources :users, only: [:create, :show, :edit, :update]
   get '/signup', to: 'users#new', as: 'signup'
   resources :books, only: [:index, :show, :new, :create] do
-    resources :summaries, only: [:create]
-    resources :comments, only: [:create]
+    resources :summaries, only: [:create, :edit, :update, :destroy]
+    resources :comments, only: [:create, :destroy]
   end
   resources :authors, only: [:show, :index, :new, :create]
   resources :sessions, only: [:create]

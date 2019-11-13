@@ -1,0 +1,13 @@
+<h1>Edit Your Summary</h1>
+<%= form_for @summary, url: book_summary_path do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %><br>
+
+    <%= f.label :content %>
+    <%= f.text_area :content %><br>
+    <%= f.submit %>
+<% end %>
+
+<%= button_to "Delete Summary", book_summary_path, method: :delete %>
+
+<h3>Back to <%= link_to @summary.book_title, book_path(@summary.book) %></h3>
