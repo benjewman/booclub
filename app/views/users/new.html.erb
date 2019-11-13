@@ -1,20 +1,26 @@
-<h1>Create Profile</h1>
-<% if flash[:notice]%>
-<p><%= flash[:notice]%></p>
-<%end%>
+<html>
+    <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+    <h1>Create Profile</h1>
+    <% if flash[:notice]%>
+    <p><%= flash[:notice]%></p>
+    <%end%>
 
-<%= form_with url: users_path do |f|%>
-    <%= f.label :name%>
-    <%= f.text_field :name, name: "user[name]"%>
-    <%= f.label :username%>
-    <%= f.text_field :username, name: "user[username]"%>
-    <%= f.label :email%>
-    <%= f.email_field :email, name: "user[email]"%>
-    <%= f.label :password%>
-    <%= f.password_field :password, name: "user[password]"%>
-    <%= f.submit%>
-<%end%>
+    <%= form_with url: users_path do |f|%>
+        <%= f.label :name%>
+        <%= f.text_field :name, name: "user[name]"%>
+        <%= f.label :username%>
+        <%= f.text_field :username, name: "user[username]"%>
+        <%= f.label :email%>
+        <%= f.text_field :email, name: "user[email]"%>
+        <%= f.label :password%>
+        <%= f.password_field :password, name: "user[password]"%>
+        <%= f.submit%>
+    <%end%>
 
-<br>
-
-<%= link_to 'Back', :back %>
+    <br>
+    </body>
+    <%= button_to 'Login', login_path, method: :get%>
+</html>

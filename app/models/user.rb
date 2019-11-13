@@ -1,8 +1,8 @@
 class User < ApplicationRecord
     has_secure_password
 
-    has_many :summaries
-    has_many :comments
+    has_many :summaries, dependent: :destroy
+    has_many :comments, dependent: :destroy
     has_many :books, through: :summaries
 
     validates :name, presence: true
