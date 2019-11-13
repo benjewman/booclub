@@ -12,4 +12,8 @@ class Author < ApplicationRecord
     def book_count
         self.books.count
     end
+
+    def self.all_count
+        self.all.count
+    end
 end

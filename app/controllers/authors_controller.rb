@@ -1,8 +1,8 @@
 class AuthorsController < ApplicationController
 
     def index
-        if params[:first_name]
-            @authors = Author.where('first_name LIKE ?', "%#{params[:first_name]}%")
+        if params[:last_name]
+            @authors = Author.where('last_name LIKE ?', "%#{params[:last_name]}%")
           else
             @authors = Author.all
         end

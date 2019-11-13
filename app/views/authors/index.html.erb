@@ -10,6 +10,10 @@
 
 
 <%= form_tag(authors_path, method: :get) do %>
-  Search for an Author <%= text_field_tag :first_name, params[:first_name] %>
+  Search for an Author by Last Name <%= text_field_tag :last_name, params[:last_name] %>
   <%= submit_tag 'Search', name: nil%>
+<% end %>
+
+<% unless @authors.count == Author.all_count %>
+  <%= button_to "All Authors", authors_path, method: :get %>
 <% end %>
