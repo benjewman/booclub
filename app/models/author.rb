@@ -1,6 +1,6 @@
 class Author < ApplicationRecord
     has_many :books
-
+    accepts_nested_attributes_for :books
     def full_name
         self.first_name + " " + self.last_name
     end
@@ -9,4 +9,7 @@ class Author < ApplicationRecord
         self.last_name + ", " + self.first_name
     end
     
+    def book_count
+        self.books.count
+    end
 end

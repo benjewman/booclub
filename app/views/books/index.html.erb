@@ -1,6 +1,14 @@
 <h1>Book List</h1>
 <ul>
 <% @books.each do |book| %>
-    <li><%= link_to "#{book.title}", book_path(book) %> by <%= " by #{book.author.full_name}" %></li>
+    <li><%= link_to "#{book.title}", book_path(book) %> by <%= " by #{book.author_full_name}" %></li>
 <% end %>
 </ul>
+
+<% if logged_in? %>
+    <%= button_to "Your Profile", user_path(current_user), method: :get %>
+<% else %>
+    <%= button_to "Login", login_path, method: :get %><br>
+    <p>Or</p>
+    <%= button_to "Signup", signup_path, method: :get %>
+<% end %>
