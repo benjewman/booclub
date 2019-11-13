@@ -5,6 +5,8 @@
 <% end %>
 </ul>
 
+<%= button_to "Authors", authors_path, method: :get %>
+<br>
 <% if logged_in? %>
     <%= button_to "Your Profile", user_path(current_user), method: :get %>
 <% else %>
