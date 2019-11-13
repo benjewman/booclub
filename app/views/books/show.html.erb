@@ -4,25 +4,22 @@
 
 <h2>Summaries</h2>
 <% @summaries.each do |summary| %>
-    <p><b><%= summary.title %></b>: a summary by <i><%= summary.username %></i></p>
-    <p><%= summary.content %></p>
-    <p><%= summary.title %> <b>Comments</b></p>
-    <% summary.comments.each do |comment| %>
-        <p><i><%= comment.content %></i> (<%= comment.user.username %>)</p>
-    <% end %>
+    <p><font color="blue"><%= summary.username %></font></p>
+    <p><b><%= summary.title %></b>: <%= summary.content %></p>
     <%= form_for [@book, Comment.new] do |f| %>
-        <%# <%= f.label :content %>
         <%= f.text_area :content %>
 
         <%= f.hidden_field :summary_id, :value => summary.id %>
-        <!-- line below should change -->
-        <%= f.hidden_field :user_id, :value => 1 %>
 
         <%= f.submit %>
     <% end %>
+    <% summary.comments.each do |comment| %>
+        <p><i><%= comment.content %></i> (<%= comment.user.username %>)</p>
+    <% end %>
+    
 
 <% end %>
-<h3>Add a Summary</h3>
+<h2>Add a Summary</h2>
 <%= form_for [@book, Summary.new] do |f| %>
     <%= f.label :title %>
     <%= f.text_field :title %><br>
@@ -39,6 +36,8 @@
 <% if flash[:notice] %>
     <div class="notice"><font color="red"><%= flash[:notice] %></font></div>
 <% end %>
+
+<h3><%= link_to "Other Books", books_path%></h3>
 
 
 

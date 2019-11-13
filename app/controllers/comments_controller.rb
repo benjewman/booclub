@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
         puts "WE GOT TO COMMENTS#CREATE"
         @book = Book.find(params[:book_id])
         @comment = Comment.create(comment_params)
+        @comment.user_id = session[:user_id]
         if @comment.save
             redirect_to book_path(@book)
         else
@@ -15,6 +16,6 @@ class CommentsController < ApplicationController
     private
     
     def comment_params
-        params.require(:comment).permit(:content, :summary_id, :user_id)
+        params.require(:comment).permit(:content, :summary_id)
     end
 end
