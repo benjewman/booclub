@@ -5,10 +5,11 @@
 <h1>by <%= link_to @author.full_name, author_path(@author) %></h2>
 <h3>Publish Year: <%= @book.publish_date %></h3>
 
-<h2>Summaries</h2>
+<h2><%= pluralize(@book.summary_count, 'Summary') %></h2>
 <% @summaries.each do |summary| %>
     <p><font color="blue"><%= summary.username %></font></p>
-    <p><b><%= summary.title %></b>: <%= summary.content %></p>
+    <p><b><%= summary.title %></b>(<%= summary.character_count %> characters): <%= summary.content %></p>
+       <p><font color="green"><%= pluralize(summary.comment_count, 'Comment') %></font></p>
     <%= form_for [@book, Comment.new] do |f| %>
         <%= f.text_area :content %>
 
@@ -17,7 +18,7 @@
         <%= f.submit %>
     <% end %>
     <% summary.comments.each do |comment| %>
-        <p><i><%= comment.content %></i> (<%= comment.user.username %>)</p>
+        <p><i><%= comment.content %></i> (<%= comment.username %>)</p>
     <% end %>
     
 

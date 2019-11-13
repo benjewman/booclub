@@ -9,4 +9,12 @@ class Summary < ApplicationRecord
         self.user.username
     end
 
+    def character_count
+        self.content.length
+    end
+
+    def comment_count
+        self.comments.count
+    end
+
 end

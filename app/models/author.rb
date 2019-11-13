@@ -9,4 +9,7 @@ class Author < ApplicationRecord
         self.last_name + ", " + self.first_name
     end
     
+    def book_count
+        self.books.count
+    end
 end

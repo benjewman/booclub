@@ -1,4 +1,5 @@
 <h1><%= @author.full_name %></h1>
+<h3><%= pluralize(@author.book_count, "Book") %></h3>
 <ul>
     <% @books.each do |book| %>
         <%= link_to book.title, book_path(book) %><br>
