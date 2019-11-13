@@ -9,6 +9,14 @@
 <% @summaries.each do |summary| %>
     <p><font color="blue"><%= summary.username %></font></p>
     <p><b><%= summary.title %></b>(<%= summary.character_count %> characters): <%= summary.content %></p>
+    <p><%= pluralize(summary.like_count, "Like") %></p>
+
+    <% if summary.liked?(current_user) %>
+        <button type="button" disabled>Liked</button>
+    <% else %>
+        <%= button_to 'Like', {:controller => "likes", :action => "create", :summary_id => summary.id} , :method=>:post  %>
+    <% end %>
+
     <% if logged_in? && session[:user_id] == summary.user_id %>
         <%= button_to "Edit Summary", edit_book_summary_path(@book, summary), method: :get %>
     <% end %>

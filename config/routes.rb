@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post '/likes', to: 'likes#create', as: :create_like
   # got rid of :new below to create user signup with an alias
   resources :users, only: [:create, :show, :edit, :update, :destroy]
   get '/signup', to: 'users#new', as: 'signup'
