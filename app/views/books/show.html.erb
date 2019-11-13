@@ -9,7 +9,10 @@
 <% @summaries.each do |summary| %>
     <p><font color="blue"><%= summary.username %></font></p>
     <p><b><%= summary.title %></b>(<%= summary.character_count %> characters): <%= summary.content %></p>
-       <p><font color="green"><%= pluralize(summary.comment_count, 'Comment') %></font></p>
+    <% if logged_in? && session[:user_id] == summary.user_id %>
+        <%= button_to "Edit Summary", edit_book_summary_path(@book, summary), method: :get %>
+    <% end %>
+    <p><font color="green"><%= pluralize(summary.comment_count, 'Comment') %></font></p>
     <%= form_for [@book, Comment.new] do |f| %>
         <%= f.text_area :content %>
 
@@ -18,7 +21,12 @@
         <%= f.submit %>
     <% end %>
     <% summary.comments.each do |comment| %>
-        <p><i><%= comment.content %></i> (<%= comment.username %>)</p>
+        <p>
+            <i><%= comment.content %></i> (<%= comment.username %>)
+            <% if logged_in? && session[:user_id] == comment.user_id %>
+                <%= button_to "Delete Comment", book_comment_path(@book, comment), method: :delete %>
+            <% end %>
+        </p>
     <% end %>
     
 
@@ -30,9 +38,6 @@
 
     <%= f.label :content %>
     <%= f.text_area :content %><br>
-
-    <!--following code should be changed -->
-    <%= f.hidden_field :user_id, :value => 1 %>
 
     <%= f.submit %>
 <% end %>
