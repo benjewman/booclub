@@ -21,7 +21,7 @@
  }
 
  .summary {
-    border-top: 2px solid black;
+    // border-top: 2px solid black;
     border-bottom: 2px solid black;
  }
 
@@ -29,3 +29,20 @@
      text-align: center;
  }
 
+ .book_pic {
+     position: absolute;
+     right: 200px;
+ }
+
+ .book_summary {
+     clear: both;
+     margin-top: 5px;
+ }
+
+ .new_book_form {
+     text-align: center;
+ }
+
+ .new_author_form {
+     text-align: center;
+ }

@@ -1,13 +1,18 @@
 <h1>Add a Book to Have It Summarized</h1>
-
+<br>
+<div class="new_book_form">
 <%= form_for @book do |f| %>
     <%= f.label :title %>
     <%= f.text_field :title %>
 
     <%= f.label :publish_date %>
     <%= f.number_field :publish_date %>
-
+    <br>
     <%= f.select(:author_id, @authors.collect {|author| [ author.full_name, author.id ] } + [ [ 'Or create a new one', 'new' ] ], {:include_blank => 'Please select an author'}) %>
+
+    <%= f.label :pic_url %>
+    <%= f.text_field :pic_url %>
 
     <%= f.submit %>
 <% end %>
+</div>

@@ -1,12 +1,13 @@
 <h1>Create a New Author for This Book</h1>
-
+<div class="new_author_form">
 <%= form_for @author do |f| %>
     <%= f.label :first_name %>
     <%= f.text_field :first_name %>
 
     <%= f.label :last_name %>
     <%= f.text_field :last_name %>
-
+    <br>
+    <br>
     <h2>Their Book</h2>
     <%= f.fields_for :books do |book| %>
         <%= book.label :title %>
@@ -14,6 +15,10 @@
 
         <%= book.label :publish_date %>
         <%= book.number_field :publish_date %>
+
+        <%= book.label :pic_url %>
+        <%= book.text_field :pic_url %>
     <% end %>
     <%= f.submit %>
 <% end %>
+</div>
