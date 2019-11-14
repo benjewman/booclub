@@ -2,12 +2,13 @@
     <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
-    <body>
-    <h1>Create Profile</h1>
+    <body class="signbody">
+    <h1 style = "font-family:courier">Create Profile</h1>
     <% if flash[:notice]%>
     <p><%= flash[:notice]%></p>
     <%end%>
-
+    <div class="text-center">
+     <div class="signinbox mx-auto" >
     <%= form_with url: users_path do |f|%>
         <%= f.label :name%>
         <%= f.text_field :name, name: "user[name]"%>
@@ -19,8 +20,12 @@
         <%= f.password_field :password, name: "user[password]"%>
         <%= f.submit%>
     <%end%>
+    <br>
+    <%= button_to 'Login', login_path, method: :get, :class => "btn btn-outline-primary"%>
+    </div>
+    </div>
 
     <br>
     </body>
-    <%= button_to 'Login', login_path, method: :get, :class => "btn btn-outline-primary"%>
+
 </html>

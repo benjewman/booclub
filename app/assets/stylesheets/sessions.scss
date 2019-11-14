@@ -1,3 +1,15 @@
 // Place all the styles related to the sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.logbox {
+    background-color: white;
+    width: 300px;
+    border: 1px solid blue;
+    padding: 50px;
+    margin: 120px;
+}
+
+.logbody {
+    background-image: url('http://anband.spb.ru/images/700/DSC100783938.jpg');
+  }

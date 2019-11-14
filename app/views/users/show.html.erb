@@ -20,21 +20,20 @@
             </div>
             </nav>
         <div class="text-center">
-        
-        ​<picture>
-        <source srcset="https://wallpaperaccess.com/full/124517.png" type="image/svg+xml">
-        <img src="https://wallpaperaccess.com/full/124517.png" class="img-fluid" alt="Backround picture" style="height: 500px; width: max-content;" >
-        </picture>
-            <h1>Welcome <%= @user.name.capitalize %></h1>
-            <p>Username: <%= @user.username%></p>
-            <p>Email: <%= @user.email%></p>
-            <h2>Your Summaries: </h2>
-
+        <div class="banner">
+            <h1>Welcome <%= @user.name.capitalize %></h1><br>
+            <p>Username: <%= @user.username%></p><br>
+            <p>Email: <%= @user.email%></p><br>
+            <h2 align="left">Your Summaries: </h2>
+            <br>
+            <br>
+            <br>
             <% @user.summaries.each do |summary|%>
-                <ul>
+                <ul align="left">
                 <%= link_to summary.title, book_path(summary.book)%>
                 </ul>
             <%end%>
+            </div>
             <br>
             <br>
             <%= button_to 'Edit Profile', edit_user_url, method: :get, :class => "btn btn-outline-primary" %>

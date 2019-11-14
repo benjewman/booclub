@@ -2,3 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.banner {
+    background-image: url('https://juliengordon.files.wordpress.com/2015/06/have-it-all.jpg');
+    height: 600px;
+}
+
+.signinbox {
+    background-color: white;
+    width: 600px;
+    border: 1px solid blue;
+    padding: 50px;
+    margin: 120px;
+}
+
+.signbody {
+    background-image: url('http://anband.spb.ru/images/700/DSC100783938.jpg');
+}
+
+.editbody {
+    background-color: rgb(227, 227, 235);
+}
+
+.editbox {
+    background-color: white;
+    width: 600px;
+    border: 1px solid blue;
+    padding: 50px;
+    margin: 120px;
+}
