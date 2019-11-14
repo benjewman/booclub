@@ -1,5 +1,8 @@
+<div class="mx-auto" style="width: max-content">
+    <h1 style="display: inline">Authors List</h1>
+    <%= image_tag("quill.jpg", size: "50x50", style: "display: inline") %>
+</div>
 
-<h1>Authors List</h1>
 <ul>
     <% @authors.order(:last_name).each do |author| %>
         <li><%= link_to author.order_last_name, author_path(author) %></li>
