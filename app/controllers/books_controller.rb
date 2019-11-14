@@ -23,7 +23,7 @@ class BooksController < ApplicationController
     def show
         find_book
         @author = @book.author
-        @summaries = @book.summaries
+        @summaries = @book.summary_order
     end
 
 
