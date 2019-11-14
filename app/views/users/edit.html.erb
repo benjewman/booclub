@@ -2,8 +2,10 @@
     <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
-    <body>
+    <body class="editbody">
     <%= render 'partials/navbar' %>
+ <div class="text-center">
+ <div class="editbox mx-auto">
     <h1>Edit Profile</h1>
     <% if flash[:notice]%>
     <p><%= flash[:notice]%></p>
@@ -23,5 +25,7 @@
 
     <br>
     <%= button_to 'Delete Profile', @user, method: :delete, :class => "btn btn-outline-dark"%>
+    </div>
+    </div>
     </body>
 </html>
