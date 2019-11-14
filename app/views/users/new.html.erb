@@ -3,7 +3,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
     <body class="signbody">
-    <%= render 'partials/navbar' %>
     <h1 style = "font-family:courier">Create Profile</h1>
     <% if flash[:notice]%>
     <p><%= flash[:notice]%></p>
@@ -12,15 +11,17 @@
      <div class="signinbox mx-auto" >
     <%= form_with url: users_path do |f|%>
         <%= f.label :name%>
-        <%= f.text_field :name, name: "user[name]"%>
+        <%= f.text_field :name, name: "user[name]"%><br>
         <%= f.label :username%>
-        <%= f.text_field :username, name: "user[username]"%>
+        <%= f.text_field :username, name: "user[username]"%><br>
         <%= f.label :email%>
-        <%= f.text_field :email, name: "user[email]"%>
+        <%= f.text_field :email, name: "user[email]"%><br>
         <%= f.label :password%>
-        <%= f.password_field :password, name: "user[password]"%>
+        <%= f.password_field :password, name: "user[password]"%><br>
         <%= f.submit%>
     <%end%>
+    <br>
+    <h3>OR</h3>
     <br>
     <%= button_to 'Login', login_path, method: :get, :class => "btn btn-outline-primary"%>
     </div>

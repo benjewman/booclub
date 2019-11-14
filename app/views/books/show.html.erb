@@ -1,8 +1,3 @@
-<%= render 'partials/navbar' %>
-
-<% if flash[:notice] %>
-    <div class="notice"><font color="red"><%= flash[:notice] %></font></div> 
-<% end %>
 <h1><%= @book.title %></h1>
 <h1>by <%= link_to @author.full_name, author_path(@author) %></h2>
 <h3>Publish Year: <%= @book.publish_date %></h3>
