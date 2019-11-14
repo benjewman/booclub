@@ -1,8 +1,11 @@
 <h1><%= @book.title %></h1>
+<% if @book.pic_url %>
+    <div class="book_pic"><%= image_tag "#{@book.pic_url}", size: "150x150" %></div>
+<% end %>
 <h1>by <%= link_to @author.full_name, author_path(@author) %></h2>
 <h3>Publish Year: <%= @book.publish_date %></h3>
-
 <h2><%= pluralize(@book.summary_count, 'Summary') %></h2>
+<div class="book_summary">
 <% @summaries.each do |summary| %>
     <div class="summary">
         <p><font color="blue"><%= summary.username %></font>'s Summary: "<b><%= summary.title %></b>" (<%= summary.character_count %> characters):</p>
@@ -38,6 +41,7 @@
         <% end %>
     </div>
 <% end %>
+</div>
 <div id="summary_form">
     <h2>Add a Summary</h2>
     <%= form_for [@book, Summary.new] do |f| %>
