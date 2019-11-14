@@ -1,7 +1,8 @@
 <html>
-    <body>
+    <body class="logbody">
      <div class="text-center">
-    <h1>Log In</h1>
+     <div class="logbox mx-auto" >
+    <h1 style = "font-family:courier">Log In</h1>
     <% if flash[:notice] %>
         <%= flash[:notice]%>
     <%end%>
@@ -14,11 +15,11 @@
         <%= f.submit "Sign in" %>
     <%end%>
     <br>
-
-    <%= button_to 'Sign up', signup_path, method: :get, :class => "btn btn-outline-primary"%>
+     <%= button_to 'Sign up', signup_path, method: :get, :class => "btn btn-outline-primary"%>
     <br>
 
     <%= button_to 'Back to Books', books_path, method: :get, :class => "btn btn-outline-primary" %>
+    </div>
     </div>
     </body>
 </html>
