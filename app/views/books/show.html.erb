@@ -7,48 +7,52 @@
 
 <h2><%= pluralize(@book.summary_count, 'Summary') %></h2>
 <% @summaries.each do |summary| %>
-    <p><font color="blue"><%= summary.username %></font></p>
-    <p><b><%= summary.title %></b>(<%= summary.character_count %> characters): <%= summary.content %></p>
-    <p><%= pluralize(summary.like_count, "Like") %></p>
+    <div class="summary">
+        <p><font color="blue"><%= summary.username %></font>'s Summary: "<b><%= summary.title %></b>" (<%= summary.character_count %> characters):</p>
+        <p><%= summary.content %></p>
+        <p><%= pluralize(summary.like_count, "Like") %></p>
 
-    <% if summary.liked?(current_user) %>
-        <button type="button" disabled>Liked</button>
-    <% else %>
-        <%= button_to 'Like', {:controller => "likes", :action => "create", :summary_id => summary.id} , :method=>:post  %>
-    <% end %>
+        <% if !logged_in? %>
+            <button type="button" disabled>Like</button>
+        <% elsif summary.liked?(current_user) %>
+            <button type="button" disabled>Liked</button>
+        <% else %>
+            <%= button_to 'Like', {:controller => "likes", :action => "create", :summary_id => summary.id} , :method=>:post  %>
+        <% end %>
 
-    <% if logged_in? && session[:user_id] == summary.user_id %>
-        <%= button_to "Edit Summary", edit_book_summary_path(@book, summary), method: :get %>
-    <% end %>
-    <%= form_for [@book, Comment.new] do |f| %>
-        <%= f.text_area :content %>
+        <% if logged_in? && session[:user_id] == summary.user_id %>
+            <%= button_to "Edit Summary", edit_book_summary_path(@book, summary), method: :get %>
+        <% end %>
+        <%= form_for [@book, Comment.new] do |f| %>
+            <%= f.text_area :content %>
 
-        <%= f.hidden_field :summary_id, :value => summary.id %>
+            <%= f.hidden_field :summary_id, :value => summary.id %>
+
+            <%= f.submit %>
+        <% end %>
+        <p><font color="green"><%= pluralize(summary.comment_count, 'Comment') %></font></p>
+        <% summary.comments.each do |comment| %>
+            <p>
+                <i><%= comment.content %></i> (<%= comment.username %>)
+                <% if logged_in? && session[:user_id] == comment.user_id %>
+                    <%= button_to "Delete Comment", book_comment_path(@book, comment), method: :delete %>
+                <% end %>
+            </p>
+        <% end %>
+    </div>
+<% end %>
+<div id="summary_form">
+    <h2>Add a Summary</h2>
+    <%= form_for [@book, Summary.new] do |f| %>
+        <%= f.label :title %>
+        <%= f.text_field :title %><br>
+
+        <%= f.label :content %>
+        <%= f.text_area :content %><br>
 
         <%= f.submit %>
     <% end %>
-    <p><font color="green"><%= pluralize(summary.comment_count, 'Comment') %></font></p>
-    <% summary.comments.each do |comment| %>
-        <p>
-            <i><%= comment.content %></i> (<%= comment.username %>)
-            <% if logged_in? && session[:user_id] == comment.user_id %>
-                <%= button_to "Delete Comment", book_comment_path(@book, comment), method: :delete %>
-            <% end %>
-        </p>
-    <% end %>
-    
-
-<% end %>
-<h2>Add a Summary</h2>
-<%= form_for [@book, Summary.new] do |f| %>
-    <%= f.label :title %>
-    <%= f.text_field :title %><br>
-
-    <%= f.label :content %>
-    <%= f.text_area :content %><br>
-
-    <%= f.submit %>
-<% end %>
+</div>
 <br>
 <% if logged_in? %>
     <%= button_to "Your Profile", user_path(current_user), method: :get %>

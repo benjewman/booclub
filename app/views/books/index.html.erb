@@ -1,5 +1,8 @@
-<h1>Book List</h1>
-<ul>
+<div class="mx-auto" style="width: max-content">
+    <h1 style="display: inline">Book List</h1>
+    <%= image_tag("book_pile.jpg", size: "50x50", style: "display: inline") %>
+</div>
+<ul class="book_summaries">
 <% @books.each do |book| %>
     <li><%= link_to "#{book.title}", book_path(book) %> by <%= " by #{book.author_full_name}" %></li>
 <% end %>
