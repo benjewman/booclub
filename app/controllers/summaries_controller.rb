@@ -41,8 +41,6 @@ class SummariesController < ApplicationController
         end
 
         def find_summary
-            p params 
-            p "******************************************************"
             @summary = Summary.find(params[:id])
         end
 

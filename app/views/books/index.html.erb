@@ -1,31 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="">Booklub</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href=<%= books_path %>>Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href=<%= authors_path%>>Authors List</a>
-            </li>
-            <% if logged_in? %>
-                <li class="nav-item">
-                    <a class="nav-link" href=<%= user_path(current_user) %>>My Profile</a>
-                </li>
-            <% else %>
-                <li class="nav-item">
-                    <a class="nav-link" href=<%= login_path %>>Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href=<%= signup_path %>>Signup</a>
-                </li>
-            <% end %>
-        </ul>
-    </div>
-</nav>
+<%= render 'partials/navbar' %>
 
 <div class="mx-auto" style="width: max-content">
     <h1 style="display: inline">Book List</h1>
@@ -44,5 +17,9 @@
 
 <% unless @books.count == Book.all_count %>
   <%= button_to "All Books", books_path, method: :get %>
+<% end %>
+<br>
+<% if logged_in? %>
+    <%= button_to "Add a Book", new_book_path, method: :get %>
 <% end %>
 

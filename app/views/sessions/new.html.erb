@@ -1,5 +1,6 @@
 <html>
     <body>
+    <%= render 'partials/navbar' %>
      <div class="text-center">
     <h1>Log In</h1>
     <% if flash[:notice] %>
@@ -16,9 +17,6 @@
     <br>
 
     <%= button_to 'Sign up', signup_path, method: :get, :class => "btn btn-outline-primary"%>
-    <br>
-
-    <%= button_to 'Back to Books', books_path, method: :get, :class => "btn btn-outline-primary" %>
     </div>
     </body>
 </html>

@@ -1,3 +1,5 @@
+<%= render 'partials/navbar' %>
+
 <h1><%= @author.full_name %></h1>
 <h3><%= pluralize(@author.book_count, "Book") %></h3>
 <ul>
@@ -5,7 +7,3 @@
         <%= link_to book.title, book_path(book) %><br>
     <% end %>
 </ul>
-
-<%= button_to "All Authors", authors_path, method: :get %>
-
-<%= button_to 'Back', :back, method: :get %>
