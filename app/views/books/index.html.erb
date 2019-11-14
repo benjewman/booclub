@@ -8,6 +8,15 @@
 <% end %>
 </ul>
 
+<%= form_tag(books_path, method: :get) do %>
+  Search for a Book by Title <%= text_field_tag :title, params[:title] %>
+  <%= submit_tag 'Search', name: nil%>
+<% end %>
+
+<% unless @books.count == Book.all_count %>
+  <%= button_to "All Books", books_path, method: :get %>
+<% end %>
+
 <%= button_to "Authors", authors_path, method: :get %>
 <br>
 <% if logged_in? %>

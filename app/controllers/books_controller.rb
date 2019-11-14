@@ -1,6 +1,10 @@
 class BooksController < ApplicationController
     def index
-        @books = Book.alphabetize_by_author
+        if params[:title]
+            @books = Book.where('title LIKE ?', "%#{params[:title]}%")
+        else
+            @books = Book.alphabetize_by_author
+        end
     end
 
     def new
