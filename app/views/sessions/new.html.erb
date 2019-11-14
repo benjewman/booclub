@@ -1,3 +1,4 @@
+<h1>Log In</h1>
 <% if flash[:notice] %>
     <%= flash[:notice]%>
 <%end%>
@@ -9,7 +10,9 @@
     <%= f.password_field :password%>
     <%= f.submit%>
 <%end%>
+<br>
 
 <%= button_to 'Sign up', signup_path, method: :get%>
+<br>
 
 <%= button_to 'Back to Books', books_path, method: :get %>
