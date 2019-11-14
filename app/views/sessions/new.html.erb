@@ -1,18 +1,24 @@
-<h1>Log In</h1>
-<% if flash[:notice] %>
-    <%= flash[:notice]%>
-<%end%>
+<html>
+    <body>
+     <div class="text-center">
+    <h1>Log In</h1>
+    <% if flash[:notice] %>
+        <%= flash[:notice]%>
+    <%end%>
 
-<%= form_with url: '/sessions' do |f| %>
-    <%= f.label :username%>
-    <%= f.text_field :username%>
-    <%= f.label :password%>
-    <%= f.password_field :password%>
-    <%= f.submit%>
-<%end%>
-<br>
+    <%= form_with url: '/sessions' do |f| %>
+        <%= f.label :username%>
+        <%= f.text_field :username%>
+        <%= f.label :password%>
+        <%= f.password_field :password%>
+        <%= f.submit "Sign in" %>
+    <%end%>
+    <br>
 
-<%= button_to 'Sign up', signup_path, method: :get%>
-<br>
+    <%= button_to 'Sign up', signup_path, method: :get, :class => "btn btn-outline-primary"%>
+    <br>
 
-<%= button_to 'Back to Books', books_path, method: :get %>
+    <%= button_to 'Back to Books', books_path, method: :get, :class => "btn btn-outline-primary" %>
+    </div>
+    </body>
+</html>
