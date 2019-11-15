@@ -1,6 +1,13 @@
 class Author < ApplicationRecord
     has_many :books
     accepts_nested_attributes_for :books
+    validates :first_name, presence: true, length: { minimum: 1 }
+    validates :last_name, presence: true, length: { minimum: 1 }
+
+    def initialize
+        first_name.capitalize
+        last_name.capitalize
+    end
     def full_name
         self.first_name + " " + self.last_name
     end

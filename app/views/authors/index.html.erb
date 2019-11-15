@@ -2,18 +2,20 @@
     <h1 style="display: inline">Authors List</h1>
     <%= image_tag("quill.jpg", size: "50x50", style: "display: inline") %>
 </div>
+<div class="float-right">
+    <%= form_tag(authors_path, method: :get) do %>
+    Search for an Author by Last Name <%= text_field_tag :last_name, params[:last_name] %>
+    <%= submit_tag 'Search', name: nil%>
+    <% end %>
+    <% unless @authors.count == Author.all_count %>
+        <%= button_to "All Authors", authors_path, method: :get %>
+    <% end %>
+</div>
 
-<ul>
+<div class="d-flex" style="clear: both">
+<ul class="list-inline mx-auto justify-content-center">
     <% @authors.order(:last_name).each do |author| %>
-        <li><%= link_to author.order_last_name, author_path(author) %></li>
+        <li  class="list-inline-item author_list_item"><%= link_to "#{author.last_name}, #{author.first_name}", author_path(author) %></li><br>
     <% end %>
 </ul>
-
-<%= form_tag(authors_path, method: :get) do %>
-  Search for an Author by Last Name <%= text_field_tag :last_name, params[:last_name] %>
-  <%= submit_tag 'Search', name: nil%>
-<% end %>
-
-<% unless @authors.count == Author.all_count %>
-  <%= button_to "All Authors", authors_path, method: :get %>
-<% end %>
+</div>
