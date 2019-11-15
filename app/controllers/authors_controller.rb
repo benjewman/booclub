@@ -1,5 +1,5 @@
 class AuthorsController < ApplicationController
-
+    
     def index
         if params[:last_name]
             @authors = Author.where('last_name LIKE ?', "%#{params[:last_name]}%")

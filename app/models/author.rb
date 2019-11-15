@@ -1,5 +1,5 @@
 class Author < ApplicationRecord
-    has_many :books
+    has_many :books, dependent: :destroy
     accepts_nested_attributes_for :books
     validates :first_name, presence: true, length: { minimum: 1 }
     validates :last_name, presence: true, length: { minimum: 1 }

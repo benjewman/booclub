@@ -7,6 +7,8 @@
     Search for an Author by Last Name <%= text_field_tag :last_name, params[:last_name] %>
     <%= submit_tag 'Search', name: nil%>
     <% end %>
+  </div>
+  <div class="float-right" style="clear: both">
     <% unless @authors.count == Author.all_count %>
         <%= button_to "All Authors", authors_path, method: :get %>
     <% end %>
@@ -15,7 +17,7 @@
 <div class="d-flex" style="clear: both">
 <ul class="list-inline mx-auto justify-content-center">
     <% @authors.order(:last_name).each do |author| %>
-        <li  class="list-inline-item author_list_item"><%= link_to "#{author.last_name}, #{author.first_name}", author_path(author) %></li><br>
+        <li  class="list-inline-item author_list_item"><%= link_to "#{author.last_name}, #{author.first_name}", author_path(author) %> - <%= pluralize(author.book_count, 'Book') %></li><br>
     <% end %>
 </ul>
 </div>
