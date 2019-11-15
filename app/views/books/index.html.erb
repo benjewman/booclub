@@ -2,11 +2,13 @@
     <h1 style="display: inline">Book List</h1>
     <%= image_tag("book_pile.jpg", size: "50x50", style: "display: inline") %>
 </div>
-<ul class="book_summaries">
+<div class="book_list">
+<ul>
 <% @books.each do |book| %>
     <li><%= link_to "#{book.title}", book_path(book) %> by <%= " by #{book.author_full_name}" %></li>
 <% end %>
 </ul>
+</div>
 
 <%= form_tag(books_path, method: :get) do %>
   Search for a Book by Title <%= text_field_tag :title, params[:title] %>

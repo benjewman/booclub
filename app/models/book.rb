@@ -31,7 +31,11 @@ class Book < ApplicationRecord
     end
 
     def pic_url_big?
-        self.pic_url.length > 3
+        if self.pic_url
+            self.pic_url.length > 3
+        else
+            false
+        end
     end
 
 end
