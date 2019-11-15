@@ -1,5 +1,5 @@
 <h1><%= @book.title %></h1>
-<% if @book.pic_url %>
+<% if @book.pic_url_big? %>
     <div class="book_pic"><%= image_tag "#{@book.pic_url}", size: "150x150" %></div>
 <% end %>
 <h1>by <%= link_to @author.full_name, author_path(@author) %></h2>

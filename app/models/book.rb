@@ -30,4 +30,8 @@ class Book < ApplicationRecord
         self.all.count
     end
 
+    def pic_url_big?
+        self.pic_url.length > 3
+    end
+
 end
