@@ -3,10 +3,12 @@ Rails.application.routes.draw do
   # got rid of :new below to create user signup with an alias
   resources :users, only: [:create, :show, :edit, :update, :destroy]
   get '/signup', to: 'users#new', as: 'signup'
-  resources :books, only: [:index, :show, :new, :create] do
+  resources :books, only: [:show, :new] do
     resources :summaries, only: [:create, :edit, :update, :destroy]
     resources :comments, only: [:create, :destroy]
   end
+  post '/', to: 'books#create'
+  get'/', to: 'books#index', as: :books
   resources :authors, only: [:show, :index, :new, :create]
   resources :sessions, only: [:create]
   get '/login', to: 'sessions#new', as: :login

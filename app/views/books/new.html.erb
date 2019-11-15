@@ -10,7 +10,7 @@
     <br>
     <%= f.select(:author_id, @authors.collect {|author| [ author.full_name, author.id ] } + [ [ 'Or create a new one', 'new' ] ], {:include_blank => 'Please select an author'}) %>
 
-    <%= f.label :pic_url %>
+    <%= f.label :pic_url %> (optional)
     <%= f.text_field :pic_url %>
 
     <%= f.submit %>
