@@ -4,9 +4,9 @@ class Author < ApplicationRecord
     validates :first_name, presence: true, length: { minimum: 1 }
     validates :last_name, presence: true, length: { minimum: 1 }
 
-    def initialize
-        first_name.capitalize
-        last_name.capitalize
+    def proper_name
+        self.first_name.capitalize!
+        self.last_name.capitalize!
     end
     def full_name
         self.first_name + " " + self.last_name

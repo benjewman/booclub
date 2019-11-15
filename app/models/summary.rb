@@ -1,7 +1,7 @@
 class Summary < ApplicationRecord
     belongs_to :book
     belongs_to :user
-    has_many :likes
+    has_many :likes, dependent: :destroy
     has_many :comments, dependent: :destroy
     validates :title, presence: true, length: { maximum: 18 }
     validates :content, presence: true, length: { maximum: 400, minimum: 50 }

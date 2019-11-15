@@ -1,5 +1,5 @@
 class AuthorsController < ApplicationController
-    
+
     def index
         if params[:last_name]
             @authors = Author.where('last_name LIKE ?', "%#{params[:last_name]}%")
@@ -17,6 +17,7 @@ class AuthorsController < ApplicationController
     def create
         # raise params.inspect
         @author = Author.new(author_params)
+        @author.proper_name
         @book = @author.books.first
         if @author.save
             redirect_to book_path(@book)

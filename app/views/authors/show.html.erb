@@ -1,6 +1,10 @@
-<h1><%= @author.full_name %></h1>
-<h3><%= pluralize(@author.book_count, "Book") %></h3>
-<ul>
+<div class="mx-auto" style="width: max-content">
+    <h1 style="display: inline"><%= @author.full_name %></h1>
+    <%= image_tag("quill.jpg", size: "50x50", style: "display: inline") %>
+</div>
+
+<h2 class="text-center"><%= pluralize(@author.book_count, "Book") %></h3>
+<ul class="text-center author_book">
     <% @books.each do |book| %>
         <%= link_to book.title, book_path(book) %><br>
     <% end %>
